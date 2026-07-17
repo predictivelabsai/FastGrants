@@ -1,0 +1,21 @@
+services:
+  fastgrants:
+    build: .
+    ports:
+      - "5015:5015"
+    environment:
+      FASTGRANTS_DB: /data/fastgrants.sqlite
+      FASTGRANTS_PORT: "5015"
+      MODEL_PROVIDER: ${MODEL_PROVIDER:-xai}
+      MODEL_NAME: ${MODEL_NAME:-grok-4-1-fast-reasoning}
+      XAI_API_KEY: ${XAI_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      FASTGRANTS_ADMIN_EMAIL: ${FASTGRANTS_ADMIN_EMAIL:-admin@fastgrants.example}
+      FASTGRANTS_ADMIN_PASSWORD: ${FASTGRANTS_ADMIN_PASSWORD:-FastGrants2026$$}
+      FASTGRANTS_SECRET: ${FASTGRANTS_SECRET:-}
+    volumes:
+      - fastgrants-data:/data
+volumes:
+  fastgrants-data:
