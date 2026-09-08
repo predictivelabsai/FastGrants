@@ -1,1 +1,1 @@
-"""FastGrants web package."""
+"""Web package."""

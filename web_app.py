@@ -1,3 +1,4 @@
+from web.landing import landing_page
 """FastGrants — an open-source grant / EU-funds lifecycle platform built with FastHTML.
 
 A server-side, HTMX-driven platform for administering public grants end to end:
@@ -104,7 +105,10 @@ def get(session):
 
 @rt("/")
 def get(session):
+    if not _user(session):
+        return landing_page()
     return _guard(session, "dashboard", views.dashboard)
+
 
 
 # --- calls ------------------------------------------------------------------
